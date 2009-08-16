@@ -1351,25 +1351,36 @@ void CLWOMeshFileLoader::readMat(u32 size)
 				os::Printer::log("LWO loader: loading glow.");
 #endif
 				{
-					File->read(&mat->Glow, 2);
+					if (FormatVersion==0)
+					{
+						File->read(&mat->GlowIntensity, 4);
 #ifndef __BIG_ENDIAN__
-					mat->Glow=os::Byteswap::byteswap(mat->Glow);
+						mat->GlowIntensity=os::Byteswap::byteswap(mat->GlowIntensity);
 #endif
-					size -= 2;
-					File->read(&mat->GlowIntensity, 4);
+						size -= 4;
+					}
+					else
+					{
+						File->read(&mat->Glow, 2);
 #ifndef __BIG_ENDIAN__
-					mat->GlowIntensity=os::Byteswap::byteswap(mat->GlowIntensity);
+						mat->Glow=os::Byteswap::byteswap(mat->Glow);
 #endif
-					size -= 4;
-					if (FormatVersion==2)
-						size -= readVX(mat->Envelope[17]);
-					File->read(&mat->GlowSize, 4);
+						size -= 2;
+						File->read(&mat->GlowIntensity, 4);
 #ifndef __BIG_ENDIAN__
-					mat->GlowSize=os::Byteswap::byteswap(mat->GlowSize);
+						mat->GlowIntensity=os::Byteswap::byteswap(mat->GlowIntensity);
 #endif
-					size -= 4;
-					if (FormatVersion==2)
-						size -= readVX(mat->Envelope[18]);
+						size -= 4;
+						if (FormatVersion==2)
+							size -= readVX(mat->Envelope[17]);
+						File->read(&mat->GlowSize, 4);
+#ifndef __BIG_ENDIAN__
+						mat->GlowSize=os::Byteswap::byteswap(mat->GlowSize);
+#endif
+						size -= 4;
+						if (FormatVersion==2)
+							size -= readVX(mat->Envelope[18]);
+					}
 				}
 				break;
 			case charsToUIntD('G','V','A','L'):
