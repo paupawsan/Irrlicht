@@ -435,7 +435,7 @@ bool CD3D9Driver::initDriver(const core::dimension2d<u32>& screenSize,
 		AlphaToCoverageSupport = (pID3D->CheckDeviceFormat(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL,
 				D3DFMT_X8R8G8B8, 0,D3DRTYPE_SURFACE,
 				(D3DFORMAT)MAKEFOURCC('A','2','M','1')) == S_OK);
-#endif	
+#endif
 	// set the renderstates
 	setRenderStates3DMode();
 
@@ -714,7 +714,7 @@ void CD3D9Driver::setMaterial(const SMaterial& material)
 
 
 //! returns a device dependent texture from a software surface (IImage)
-video::ITexture* CD3D9Driver::createDeviceDependentTexture(IImage* surface,const core::string<c16>& name)
+video::ITexture* CD3D9Driver::createDeviceDependentTexture(IImage* surface,const io::path& name)
 {
 	return new CD3D9Texture(surface, this, TextureCreationFlags, name);
 }
@@ -1475,7 +1475,7 @@ void CD3D9Driver::draw2DImageBatch(const video::ITexture* texture,
 
 		indices.push_back(0+i*4);
 		indices.push_back(2+i*4);
-		indices.push_back(3+i*4);	
+		indices.push_back(3+i*4);
 	}
 
 	setVertexShader(EVT_STANDARD);
@@ -1939,7 +1939,7 @@ void CD3D9Driver::setBasicRenderStates(const SMaterial& material, const SMateria
 	if (queryFeature(EVDF_COLOR_MASK) &&
 		(resetAllRenderstates || lastmaterial.ColorMask != material.ColorMask))
 	{
-		const DWORD flag = 
+		const DWORD flag =
 			((material.ColorMask & ECP_RED)?D3DCOLORWRITEENABLE_RED:0) |
 			((material.ColorMask & ECP_GREEN)?D3DCOLORWRITEENABLE_GREEN:0) |
 			((material.ColorMask & ECP_BLUE)?D3DCOLORWRITEENABLE_BLUE:0) |
@@ -1965,7 +1965,7 @@ void CD3D9Driver::setBasicRenderStates(const SMaterial& material, const SMateria
 			else if (VendorID==0x1002)
 				pID3DDevice->SetRenderState(D3DRS_POINTSIZE, MAKEFOURCC('A','2','M','0'));
 		}
-			
+
 		// enable antialiasing
 		if (AntiAliasing)
 		{
@@ -2782,7 +2782,7 @@ IVideoDriver* CD3D9Driver::getVideoDriver()
 
 //! Creates a render target texture.
 ITexture* CD3D9Driver::addRenderTargetTexture(const core::dimension2d<u32>& size,
-											  const core::string<c16>& name,
+											  const io::path& name,
 											  const ECOLOR_FORMAT format)
 {
 	ITexture* tex = new CD3D9Texture(this, size, name, format);

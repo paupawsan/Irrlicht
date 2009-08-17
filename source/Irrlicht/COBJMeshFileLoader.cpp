@@ -2,7 +2,7 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in irrlicht.h
 
-#include "IrrCompileConfig.h" 
+#include "IrrCompileConfig.h"
 #ifdef _IRR_COMPILE_WITH_OBJ_LOADER_
 
 #include "COBJMeshFileLoader.h"
@@ -51,7 +51,7 @@ COBJMeshFileLoader::~COBJMeshFileLoader()
 
 //! returns true if the file maybe is able to be loaded by this class
 //! based on the file extension (e.g. ".bsp")
-bool COBJMeshFileLoader::isALoadableFileExtension(const core::string<c16>& filename) const
+bool COBJMeshFileLoader::isALoadableFileExtension(const io::path& filename) const
 {
 	return core::hasFileExtension ( filename, "obj" );
 }
@@ -77,8 +77,8 @@ IAnimatedMesh* COBJMeshFileLoader::createMesh(io::IReadFile* file)
 	Materials.push_back(currMtl);
 	u32 smoothingGroup=0;
 
-	const core::string<c16> fullName = file->getFileName();
-	const core::string<c16> relPath = FileSystem->getFileDir(fullName)+"/";
+	const io::path fullName = file->getFileName();
+	const io::path relPath = FileSystem->getFileDir(fullName)+"/";
 
 	c8* buf = new c8[filesize];
 	memset(buf, 0, filesize);
@@ -243,7 +243,7 @@ IAnimatedMesh* COBJMeshFileLoader::createMesh(io::IReadFile* file)
 					vertLocation = currMtl->Meshbuffer->Vertices.size() -1;
 					currMtl->VertMap.insert(v, vertLocation);
 				}
-				
+
 				faceCorners.push_back(vertLocation);
 
 				// go to next vertex
@@ -263,7 +263,7 @@ IAnimatedMesh* COBJMeshFileLoader::createMesh(io::IReadFile* file)
 		}
 		break;
 
-		case '#': // comment 
+		case '#': // comment
 		default:
 			break;
 		}	// end switch(bufPtr[0])
@@ -315,7 +315,7 @@ IAnimatedMesh* COBJMeshFileLoader::createMesh(io::IReadFile* file)
 }
 
 
-const c8* COBJMeshFileLoader::readTextures(const c8* bufPtr, const c8* const bufEnd, SObjMtl* currMaterial, const core::string<c16>& relPath)
+const c8* COBJMeshFileLoader::readTextures(const c8* bufPtr, const c8* const bufEnd, SObjMtl* currMaterial, const io::path& relPath)
 {
 	u8 type=0; // map_Kd - diffuse color texture map
 	// map_Ks - specular color texture map
@@ -414,7 +414,7 @@ const c8* COBJMeshFileLoader::readTextures(const c8* bufPtr, const c8* const buf
 	if (clamp)
 		currMaterial->Meshbuffer->Material.setFlag(video::EMF_TEXTURE_WRAP, video::ETC_CLAMP);
 
-	core::string<c16> texname(textureNameBuf);
+	io::path texname(textureNameBuf);
 	texname.replace('\\', '/');
 
 	video::ITexture * texture = 0;
@@ -454,18 +454,18 @@ const c8* COBJMeshFileLoader::readTextures(const c8* bufPtr, const c8* const buf
 }
 
 
-void COBJMeshFileLoader::readMTL(const c8* fileName, const core::string<c16>& relPath)
+void COBJMeshFileLoader::readMTL(const c8* fileName, const io::path& relPath)
 {
 	io::IReadFile * mtlReader;
 
-	core::string<c16> realFile ( fileName );
+	io::path realFile ( fileName );
 
 	if (FileSystem->existFile(realFile))
 		mtlReader = FileSystem->createAndOpenFile(realFile.c_str() );
 	else
 	{
 		// try to read in the relative path, the .obj is loaded from
-		core::string<c16> r2 = relPath + realFile;
+		io::path r2 = relPath + realFile;
 		mtlReader = FileSystem->createAndOpenFile(r2.c_str());
 	}
 	if (!mtlReader)	// fail to open and read file

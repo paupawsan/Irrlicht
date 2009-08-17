@@ -136,7 +136,7 @@ CLWOMeshFileLoader::~CLWOMeshFileLoader()
 
 //! returns true if the file maybe is able to be loaded by this class
 //! based on the file extension (e.g. ".bsp")
-bool CLWOMeshFileLoader::isALoadableFileExtension(const core::string<c16>& filename) const
+bool CLWOMeshFileLoader::isALoadableFileExtension(const io::path& filename) const
 {
 	return core::hasFileExtension(filename, "lwo");
 }

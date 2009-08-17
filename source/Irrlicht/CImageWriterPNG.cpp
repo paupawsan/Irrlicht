@@ -58,7 +58,7 @@ CImageWriterPNG::CImageWriterPNG()
 #endif
 }
 
-bool CImageWriterPNG::isAWriteableFileExtension(const core::string<c16>& filename) const
+bool CImageWriterPNG::isAWriteableFileExtension(const io::path& filename) const
 {
 #ifdef _IRR_COMPILE_WITH_LIBPNG_
 	return core::hasFileExtension ( filename, "png" );
