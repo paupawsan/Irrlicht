@@ -1469,19 +1469,23 @@ void CD3D9Driver::draw2DImageBatch(const video::ITexture* texture,
 				0.0f, 0.0f, 0.0f, color,
 				tcoords.UpperLeftCorner.X, tcoords.LowerRightCorner.Y));
 
-		indices.push_back(0+i*4);
-		indices.push_back(1+i*4);
-		indices.push_back(2+i*4);
+		const u32 curPos = vtx.size()-4;
+		indices.push_back(0+curPos);
+		indices.push_back(1+curPos);
+		indices.push_back(2+curPos);
 
-		indices.push_back(0+i*4);
-		indices.push_back(2+i*4);
-		indices.push_back(3+i*4);
+		indices.push_back(0+curPos);
+		indices.push_back(2+curPos);
+		indices.push_back(3+curPos);
 	}
 
-	setVertexShader(EVT_STANDARD);
+	if (vtx.size())
+	{
+		setVertexShader(EVT_STANDARD);
 
-	pID3DDevice->DrawIndexedPrimitiveUP(D3DPT_TRIANGLELIST, 0, vtx.size(), indices.size() / 3, indices.pointer(),
-		D3DFMT_INDEX16,vtx.pointer(), sizeof(S3DVertex));
+		pID3DDevice->DrawIndexedPrimitiveUP(D3DPT_TRIANGLELIST, 0, vtx.size(), indices.size() / 3, indices.pointer(),
+			D3DFMT_INDEX16,vtx.pointer(), sizeof(S3DVertex));
+	}
 }
 
 
