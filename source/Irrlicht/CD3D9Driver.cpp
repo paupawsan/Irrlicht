@@ -3040,12 +3040,15 @@ void CD3D9Driver::checkDepthBuffer(ITexture* tex)
 	{
 		D3DSURFACE_DESC desc;
 		DepthBuffers[0]->Surface->GetDesc(&desc);
+		// the multisampling needs to match the RTT
+		D3DSURFACE_DESC desc2;
+		((CD3D9Texture*)tex)->Texture->GetLevelDesc(0,&desc2);
 		DepthBuffers.push_back(new SDepthSurface());
 		HRESULT hr=pID3DDevice->CreateDepthStencilSurface(optSize.Width,
 				optSize.Height,
 				desc.Format,
-				desc.MultiSampleType,
-				desc.MultiSampleQuality,
+				desc2.MultiSampleType,
+				desc2.MultiSampleQuality,
 				TRUE,
 				&(DepthBuffers.getLast()->Surface),
 				NULL);
