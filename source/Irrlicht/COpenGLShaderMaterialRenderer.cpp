@@ -206,7 +206,7 @@ bool COpenGLShaderMaterialRenderer::checkError(const irr::c8* type)
 
 		core::stringc errString = type;
 		errString += " compilation failed at position ";
-		errString += core::stringc(errPos);
+		errString += core::stringc(s32(errPos));
 		errString += ":\n";
 		errString += reinterpret_cast<const char*>(glGetString(GL_PROGRAM_ERROR_STRING_ARB));
 

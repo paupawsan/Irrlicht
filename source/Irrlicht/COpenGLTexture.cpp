@@ -507,7 +507,7 @@ GLint COpenGLFBOTexture::getOpenGLFormatAndParametersFromColorFormat(ECOLOR_FORM
 		// Floating Point texture formats. Thanks to Patryk "Nadro" Nadrowski.
 		case ECF_R16F:
 		{
-#ifdef GL_ARB_texture_float
+#ifdef GL_ARB_texture_rg
 			filtering = GL_NEAREST;
 			colorformat = GL_RED;
 			type = GL_FLOAT;
@@ -519,7 +519,7 @@ GLint COpenGLFBOTexture::getOpenGLFormatAndParametersFromColorFormat(ECOLOR_FORM
 		}
 		case ECF_G16R16F:
 		{
-#ifdef GL_ARB_texture_float
+#ifdef GL_ARB_texture_rg
 			filtering = GL_NEAREST;
 			colorformat = GL_RG;
 			type = GL_FLOAT;
@@ -531,7 +531,7 @@ GLint COpenGLFBOTexture::getOpenGLFormatAndParametersFromColorFormat(ECOLOR_FORM
 		}
 		case ECF_A16B16G16R16F:
 		{
-#ifdef GL_ARB_texture_float
+#ifdef GL_ARB_texture_rg
 			filtering = GL_NEAREST;
 			colorformat = GL_RGBA;
 			type = GL_FLOAT;
@@ -543,7 +543,7 @@ GLint COpenGLFBOTexture::getOpenGLFormatAndParametersFromColorFormat(ECOLOR_FORM
 		}
 		case ECF_R32F:
 		{
-#ifdef GL_ARB_texture_float
+#ifdef GL_ARB_texture_rg
 			filtering = GL_NEAREST;
 			colorformat = GL_RED;
 			type = GL_FLOAT;
@@ -555,7 +555,7 @@ GLint COpenGLFBOTexture::getOpenGLFormatAndParametersFromColorFormat(ECOLOR_FORM
 		}
 		case ECF_G32R32F:
 		{
-#ifdef GL_ARB_texture_float
+#ifdef GL_ARB_texture_rg
 			filtering = GL_NEAREST;
 			colorformat = GL_RG;
 			type = GL_FLOAT;
