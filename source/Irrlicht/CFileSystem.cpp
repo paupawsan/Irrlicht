@@ -345,7 +345,7 @@ const core::string<c16>& CFileSystem::getWorkingDirectory()
 		#elif defined(_IRR_WINDOWS_API_)
 			#if defined(_IRR_WCHAR_FILESYSTEM )
 				wchar_t tmp[_MAX_PATH];
-				_wgetcwd(tmp, FILE_SYSTEM_MAX_PATH);
+				_wgetcwd(tmp, _MAX_PATH);
 			#else
 				c8 tmp[_MAX_PATH];
 				_getcwd(tmp, _MAX_PATH);
