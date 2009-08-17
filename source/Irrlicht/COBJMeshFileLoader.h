@@ -83,11 +83,13 @@ private:
 	u32 copyWord(c8* outBuf, const c8* inBuf, u32 outBufLength, const c8* const pBufEnd);
 	// copies the current line from the inBuf to the outBuf
 	core::stringc copyLine(const c8* inBuf, const c8* const bufEnd);
+
 	// combination of goNextWord followed by copyWord
 	const c8* goAndCopyNextWord(c8* outBuf, const c8* inBuf, u32 outBufLength, const c8* const pBufEnd);
 
 	//! Read the material from the given file
 	void readMTL(const c8* fileName, const io::path& relPath);
+
 	//! Find and return the material with the given name
 	SObjMtl* findMtl(const core::stringc& mtlName, const core::stringc& grpName);
 

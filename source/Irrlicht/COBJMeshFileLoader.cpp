@@ -456,17 +456,22 @@ const c8* COBJMeshFileLoader::readTextures(const c8* bufPtr, const c8* const buf
 
 void COBJMeshFileLoader::readMTL(const c8* fileName, const io::path& relPath)
 {
+	const io::path realFile(fileName);
 	io::IReadFile * mtlReader;
 
-	io::path realFile ( fileName );
-
 	if (FileSystem->existFile(realFile))
-		mtlReader = FileSystem->createAndOpenFile(realFile.c_str() );
+		mtlReader = FileSystem->createAndOpenFile(realFile);
+	else if (FileSystem->existFile(relPath + realFile))
+	{
+		mtlReader = FileSystem->createAndOpenFile(relPath + realFile);
+	}
+	else if (FileSystem->existFile(FileSystem->getFileBasename(realFile)))
+	{
+		mtlReader = FileSystem->createAndOpenFile(FileSystem->getFileBasename(realFile));
+	}
 	else
 	{
-		// try to read in the relative path, the .obj is loaded from
-		io::path r2 = relPath + realFile;
-		mtlReader = FileSystem->createAndOpenFile(r2.c_str());
+		mtlReader = FileSystem->createAndOpenFile(relPath + FileSystem->getFileBasename(realFile));
 	}
 	if (!mtlReader)	// fail to open and read file
 		return;
