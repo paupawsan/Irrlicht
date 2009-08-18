@@ -704,6 +704,9 @@ void CLWOMeshFileLoader::readVertexMapping(u32 size)
 		UvCoords.push_back(tcoord);
 		UvPointsArray.push_back(index);
 	}
+#ifdef LWO_READER_DEBUG
+	os::Printer::log("LWO loader: UvCoords", core::stringc(UvCoords.size()));
+#endif
 }
 
 
@@ -757,6 +760,9 @@ void CLWOMeshFileLoader::readDiscVertexMapping(u32 size)
 		VmPolyPoints.push_back(vmpolys);
 		VmPolyPoints.push_back(vmpoints);
 	}
+#ifdef LWO_READER_DEBUG
+	os::Printer::log("LWO loader: VmCoords", core::stringc(VmCoords.size()));
+#endif
 }
 
 

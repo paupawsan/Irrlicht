@@ -287,7 +287,7 @@ bool COpenGLShaderMaterialRenderer::createVertexShader(const c8* vtxsh)
 
 	// compile
 	Driver->extGlProgramString(GL_VERTEX_PROGRAM_ARB, GL_PROGRAM_FORMAT_ASCII_ARB,
-		strlen(vtxsh), vtxsh);
+		(GLsizei)strlen(vtxsh), vtxsh);
 
 	if (checkError("Vertex shader"))
 	{

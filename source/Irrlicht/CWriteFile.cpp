@@ -46,7 +46,7 @@ s32 CWriteFile::write(const void* buffer, u32 sizeToWrite)
 	if (!isOpen())
 		return 0;
 
-	return fwrite(buffer, 1, sizeToWrite, File);
+	return (s32)fwrite(buffer, 1, sizeToWrite, File);
 }
 
 
