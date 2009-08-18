@@ -2579,15 +2579,29 @@ bool CD3D9Driver::reset()
 	// restore screen depthbuffer
 	pID3DDevice->GetDepthStencilSurface(&(DepthBuffers[0]->Surface));
 	D3DSURFACE_DESC desc;
-	DepthBuffers[0]->Surface->GetDesc(&desc);
 	// restore other depth buffers
+	// dpeth format is taken from main depth buffer
+	DepthBuffers[0]->Surface->GetDesc(&desc);
+	// multisampling is taken from rendertarget
+	D3DSURFACE_DESC desc2;
 	for (i=1; i<DepthBuffers.size(); ++i)
 	{
+		for (u32 j=0; j<Textures.size(); ++j)
+		{
+			// all textures sharing this depth buffer must have the same setting
+			// so take first one
+			if (((CD3D9Texture*)(Textures[j].Surface))->DepthSurface==DepthBuffers[i])
+			{
+				((CD3D9Texture*)(Textures[j].Surface))->Texture->GetLevelDesc(0,&desc2);
+				break;
+			}
+		}
+
 		pID3DDevice->CreateDepthStencilSurface(DepthBuffers[i]->Size.Width,
 				DepthBuffers[i]->Size.Height,
 				desc.Format,
-				desc.MultiSampleType,
-				desc.MultiSampleQuality,
+				desc2.MultiSampleType,
+				desc2.MultiSampleQuality,
 				TRUE,
 				&(DepthBuffers[i]->Surface),
 				NULL);
