@@ -2,7 +2,6 @@
 // No rights reserved: this software is in the public domain.
 
 #include "testUtils.h"
-#include "irrlicht.h"
 
 //! Tests that symbols exported from Irrlicht can be used by the user app.
 bool exports(void)
