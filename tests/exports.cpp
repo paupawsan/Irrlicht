@@ -6,6 +6,7 @@
 //! Tests that symbols exported from Irrlicht can be used by the user app.
 bool exports(void)
 {
+	logTestString("Checking whether IdentityMatrix is exported.\n");
 	irr::core::matrix4 identity = irr::core::IdentityMatrix;
 	(void)identity; // Satisfy the compiler that it's used.
 

@@ -66,4 +66,3 @@ bool b3dAnimation(void)
 
 	return result;
 }
-
