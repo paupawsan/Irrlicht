@@ -39,6 +39,7 @@ bool b3dAnimation(void)
 			node1->setPosition(vector3df(-3, -3, 10));
 			node1->setMaterialFlag(EMF_LIGHTING, false);
 			node1->setAnimationSpeed(0.f);
+			node1->setCurrentFrame(10.f);
 		}
 
 		node2 = smgr->addAnimatedMeshSceneNode(mesh);
