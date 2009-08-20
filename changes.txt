@@ -1,5 +1,7 @@
 Changes in 1.6 (??.??.2009)
 
+ - Fix a bug with FPS camera animator causing stutters. Patch by FuzzYspo0N
+
  - Fix scrolling controls in CGUITabControl
 
  - Fix a bug when getting optimal texture size in D3D drivers, by Jetro Lauha (tonic)
