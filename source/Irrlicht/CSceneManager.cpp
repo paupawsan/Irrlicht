@@ -180,6 +180,10 @@ CSceneManager::CSceneManager(video::IVideoDriver* driver, io::IFileSystem* fs,
 	// root node's scene manager
 	SceneManager = this;
 
+	// set scene parameters
+	Parameters.setAttribute( DEBUG_NORMAL_LENGTH, 1.f );
+	Parameters.setAttribute( DEBUG_NORMAL_COLOR, video::SColor(255, 34, 221, 221));
+
 	if (Driver)
 		Driver->grab();
 

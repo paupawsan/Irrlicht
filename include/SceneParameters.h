@@ -134,6 +134,23 @@ namespace scene
 	deleting scene nodes for example */
 	const c8* const IRR_SCENE_MANAGER_IS_EDITOR = "IRR_Editor";
 
+	//! Name of the parameter for setting the length of debug normals.
+	/** Use it like this:
+	\code
+	SceneManager->getParameters()->setAttribute(scene::DEBUG_NORMAL_LENGTH, 1.5f);
+	\endcode
+	**/
+	const c8* const DEBUG_NORMAL_LENGTH = "DEBUG_Normal_Length";
+
+	//! Name of the parameter for setting the color of debug normals.
+	/** Use it like this:
+	\code
+	SceneManager->getParameters()->setAttributeAsColor(scene::DEBUG_NORMAL_COLOR, video::SColor(255, 255, 255, 255));
+	\endcode
+	**/
+	const c8* const DEBUG_NORMAL_COLOR = "DEBUG_Normal_Color";
+
+
 } // end namespace scene
 } // end namespace irr
 
