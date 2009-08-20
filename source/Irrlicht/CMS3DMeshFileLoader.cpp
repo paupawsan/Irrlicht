@@ -564,7 +564,11 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 			pPtr += sizeof(u32);
 			for (i=0; i<numComments; ++i)
 			{
-				pPtr += sizeof(s32); // index
+				// according to scorpiomidget this field does
+				// not exist for model comments. So avoid to
+				// read it
+				if (j!=3)
+					pPtr += sizeof(s32); // index
 				s32 commentLength = *(s32*)pPtr;
 #ifdef __BIG_ENDIAN__
 				commentLength = os::Byteswap::byteswap(commentLength);
