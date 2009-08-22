@@ -90,18 +90,22 @@ IAnimatedMesh* COBJMeshFileLoader::createMesh(io::IReadFile* file)
 	core::stringc grpName, mtlName;
 	bool mtlChanged=false;
 	bool useGroups = !SceneManager->getParameters()->getAttributeAsBool(OBJ_LOADER_IGNORE_GROUPS);
+	bool useMaterials = !SceneManager->getParameters()->getAttributeAsBool(OBJ_LOADER_IGNORE_MATERIAL_FILES);
 	while(bufPtr != bufEnd)
 	{
 		switch(bufPtr[0])
 		{
 		case 'm':	// mtllib (material)
 		{
-			c8 name[WORD_BUFFER_LENGTH];
-			bufPtr = goAndCopyNextWord(name, bufPtr, WORD_BUFFER_LENGTH, bufEnd);
+			if (useMaterials)
+			{
+				c8 name[WORD_BUFFER_LENGTH];
+				bufPtr = goAndCopyNextWord(name, bufPtr, WORD_BUFFER_LENGTH, bufEnd);
 #ifdef _IRR_DEBUG_OBJ_LOADER_
-	os::Printer::log("Reading material file",name);
+				os::Printer::log("Reading material file",name);
 #endif
-			readMTL(name, relPath);
+				readMTL(name, relPath);
+			}
 		}
 			break;
 
@@ -474,11 +478,17 @@ void COBJMeshFileLoader::readMTL(const c8* fileName, const io::path& relPath)
 		mtlReader = FileSystem->createAndOpenFile(relPath + FileSystem->getFileBasename(realFile));
 	}
 	if (!mtlReader)	// fail to open and read file
+	{
+		os::Printer::log("Could not open material file", realFile, ELL_WARNING);
 		return;
+	}
 
 	const long filesize = mtlReader->getSize();
 	if (!filesize)
+	{
+		os::Printer::log("Skipping empty material file", realFile, ELL_WARNING);
 		return;
+	}
 
 	c8* buf = new c8[filesize];
 	mtlReader->read((void*)buf, filesize);

@@ -120,6 +120,15 @@ namespace scene
 	const c8* const OBJ_LOADER_IGNORE_GROUPS = "OBJ_IgnoreGroups";
 
 
+	//! Flag to avoid loading material .mtl file for .obj files
+	/** Use it like this:
+	\code
+	SceneManager->getParameters()->setAttribute(scene::OBJ_LOADER_IGNORE_MATERIAL_FILES, true);
+	\endcode
+	**/
+	const c8* const OBJ_LOADER_IGNORE_MATERIAL_FILES = "OBJ_IgnoreMaterialFiles";
+
+
 	//! Flag to ignore the b3d file's mipmapping flag
 	/** Instead Irrlicht's texture creation flag is used. Use it like this:
 	\code
