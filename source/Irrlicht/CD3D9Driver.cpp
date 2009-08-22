@@ -2576,6 +2576,13 @@ bool CD3D9Driver::reset()
 
 	HRESULT hr = pID3DDevice->Reset(&present);
 
+	// restore RTTs
+	for (i=0; i<Textures.size(); ++i)
+	{
+		if (Textures[i].Surface->isRenderTarget())
+			((CD3D9Texture*)(Textures[i].Surface))->createRenderTarget();
+	}
+
 	// restore screen depthbuffer
 	pID3DDevice->GetDepthStencilSurface(&(DepthBuffers[0]->Surface));
 	D3DSURFACE_DESC desc;
@@ -2605,13 +2612,6 @@ bool CD3D9Driver::reset()
 				TRUE,
 				&(DepthBuffers[i]->Surface),
 				NULL);
-	}
-
-	// restore RTTs
-	for (i=0; i<Textures.size(); ++i)
-	{
-		if (Textures[i].Surface->isRenderTarget())
-			((CD3D9Texture*)(Textures[i].Surface))->createRenderTarget();
 	}
 
 	if (FAILED(hr))
