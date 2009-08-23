@@ -38,7 +38,6 @@ public:
 	virtual IAnimatedMesh* createMesh(io::IReadFile* file);
 
 private:
-	io::IFileSystem* FileSystem;
 	scene::ISceneManager* SceneManager;
 
 };

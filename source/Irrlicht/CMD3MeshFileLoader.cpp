@@ -20,10 +20,12 @@ CMD3MeshFileLoader::CMD3MeshFileLoader( scene::ISceneManager* smgr)
 {
 }
 
+
 //! destructor
 CMD3MeshFileLoader::~CMD3MeshFileLoader()
 {
 }
+
 
 //! returns true if the file maybe is able to be loaded by this class
 //! based on the file extension (e.g. ".bsp")
@@ -49,4 +51,3 @@ IAnimatedMesh* CMD3MeshFileLoader::createMesh(io::IReadFile* file)
 } // end namespace irr
 
 #endif // _IRR_COMPILE_WITH_MD3_LOADER_
-
