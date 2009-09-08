@@ -642,5 +642,10 @@ namespace core
 } // end namespace core
 } // end namespace irr
 
+#ifndef IRRLICHT_FAST_MATH
+	using irr::core::IR;
+	using irr::core::FR;
+#endif
+
 #endif
 
