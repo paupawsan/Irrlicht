@@ -29,8 +29,9 @@ namespace irr
 {
 namespace scene
 {
+namespace
+{
 	// currently supported COLLADA tag names
-
 	const core::stringc colladaSectionName =   "COLLADA";
 	const core::stringc librarySectionName =   "library";
 	const core::stringc libraryNodesSectionName = "library_nodes";
@@ -122,6 +123,7 @@ namespace scene
 
 	const char* const inputSemanticNames[] = {"POSITION", "VERTEX", "NORMAL", "TEXCOORD",
 		"UV", "TANGENT", "IMAGE", "TEXTURE", 0};
+}
 
 	//! following class is for holding and creating instances of library
 	//! objects, named prefabs in this loader.
