@@ -1,5 +1,7 @@
 Changes in 1.6 (??.??.2009)
 
+ - Renamed some methods in ISkinnedMesh to match the official Irrlicht naming scheme according to createXXX()
+
  - Fix cursor problems found by buffer and by rvl2 as described in http://irrlicht.sourceforge.net/phpBB2/viewtopic.php?t=34823&highlight=
 
  - Change debug data to draw using lines instead of arrows, which is much faster. Patch by pc0de
