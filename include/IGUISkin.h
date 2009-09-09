@@ -174,6 +174,8 @@ namespace gui
 		"ButtonHeight",
 		"TextDistanceX",
 		"TextDistanceY",
+		"TitleBarTextX",
+		"TitleBarTextY",
 		0,
 	};
 
