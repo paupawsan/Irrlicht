@@ -1861,6 +1861,8 @@ void CColladaFileLoader::readPolygonSection(io::IXMLReaderUTF8* reader,
 	core::stringc polygonType = reader->getNodeName();
 	const int polygonCount = reader->getAttributeValueAsInt("count"); // Not useful because it only determines the number of primitives, which have arbitrary vertices in case of polygon
 	core::array<SPolygon> polygons;
+	if (polygonType == polygonsSectionName)
+		polygons.reallocate(polygonCount);
 	core::array<int> vCounts;
 	bool parsePolygonOK = false;
 	bool parseVcountOK = false;
@@ -1978,7 +1980,10 @@ void CColladaFileLoader::readPolygonSection(io::IXMLReaderUTF8* reader,
 				data.trim();
 				const c8* p = &data[0];
 				SPolygon& poly = polygons.getLast();
-				poly.Indices.reallocate(polygonCount*(maxOffset+1)*3);
+				if (polygonType == polygonsSectionName)
+					poly.Indices.reallocate((maxOffset+1)*3);
+				else
+					poly.Indices.reallocate(polygonCount*(maxOffset+1)*3);
 
 				if (vCounts.empty())
 				{
