@@ -45,7 +45,7 @@ bool terrainSceneNode(void)
 	driver->endScene();
 
 	// Note that this has to be a slightly fuzzier than usual compare to satisfy multiple OpenGL environments
-	bool result = takeScreenshotAndCompareAgainstReference(driver, "-terrainSceneNode-1.png", 98.3f);
+	bool result = takeScreenshotAndCompareAgainstReference(driver, "-terrainSceneNode-1.png", 98.29f);
 	if(!result)
 	{
 		logTestString("Small camera up rotation caused bad recalc.\n");

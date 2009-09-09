@@ -19,7 +19,6 @@
 	#include <Windowsx.h>
 #endif
 
-
 namespace irr
 {
 	class CIrrDeviceWin32 : public CIrrDeviceStub, video::IImagePresenter
