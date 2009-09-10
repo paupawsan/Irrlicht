@@ -339,7 +339,7 @@ void CGUIFileOpenDialog::fillListBox()
 			int len = mbstowcs(ws,cs,strlen(cs));
 			ws[len] = 0;
 			s = ws;
-			delete ws;
+			delete [] ws;
 			#else
 			s = FileList->getFileName(i).c_str();
 			#endif
