@@ -398,13 +398,12 @@ namespace scene
 			const core::vector3df& rotation = core::vector3df(0,0,0),
 			const core::vector3df& scale = core::vector3df(1.0f, 1.0f, 1.0f)) = 0;
 
-		//! Adds a test scene node for test purposes to the scene.
-		/** It is a simple cube of (1,1,1) size.
-		\param size: Size of the cube.
-		\param parent: Parent of the scene node. Can be NULL if no parent.
+		//! Adds a cube scene node
+		/** \param size: Size of the cube, uniformly in each dimension.
+		\param parent: Parent of the scene node. Can be 0 if no parent.
 		\param id: Id of the node. This id can be used to identify the scene node.
-		\param position: Position of the space relative to its parent where the
-		scene node will be placed.
+		\param position: Position of the space relative to its parent
+		where the scene node will be placed.
 		\param rotation: Initital rotation of the scene node.
 		\param scale: Initial scale of the scene node.
 		\return Pointer to the created test scene node. This
@@ -415,14 +414,14 @@ namespace scene
 			const core::vector3df& rotation = core::vector3df(0,0,0),
 			const core::vector3df& scale = core::vector3df(1.0f, 1.0f, 1.0f)) = 0;
 
-		//! Adds a sphere scene node for test purposes to the scene.
-		/** It is a simple sphere.
-		\param radius: Radius of the sphere.
-		\param polyCount: Polycount of the sphere.
-		\param parent: Parent of the scene node. Can be NULL if no parent.
+		//! Adds a sphere scene node of the given radius and detail
+		/** \param radius: Radius of the sphere.
+		\param polyCount: Polycount of the sphere, i.e. subdivision in
+		horizontal and vertical direction.
+		\param parent: Parent of the scene node. Can be 0 if no parent.
 		\param id: Id of the node. This id can be used to identify the scene node.
-		\param position: Position of the space relative to its parent where the
-		scene node will be placed.
+		\param position: Position of the space relative to its parent
+		where the scene node will be placed.
 		\param rotation: Initital rotation of the scene node.
 		\param scale: Initial scale of the scene node.
 		\return Pointer to the created test scene node. This
