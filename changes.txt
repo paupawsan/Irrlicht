@@ -1,4 +1,4 @@
-Changes in 1.6 (??.??.2009)
+Changes in 1.6 (23.09.2009)
 
  - Renamed some methods in ISkinnedMesh to match the official Irrlicht naming scheme according to createXXX()
 
