@@ -92,7 +92,7 @@ void GameData::setDefault ()
 	deviceParam.WindowSize.Height = 600;
 	deviceParam.Fullscreen = false;
 	deviceParam.Bits = 32;
-	deviceParam.ZBufferBits = 32;
+	deviceParam.ZBufferBits = 16;
 	deviceParam.Vsync = false;
 	deviceParam.AntiAlias = false;
 
