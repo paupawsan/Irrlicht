@@ -1969,7 +1969,7 @@ void CQuake3EventHandler::Animate()
 
 		IAttributes * attr = smgr->getParameters();
 		swprintf ( msg, 128,
-			L"Q3 %s [%s], FPS:%03d Tri:%.03fm Cull %d/%d nodes (%d,%d,%d)",
+			L"Q3 %s [%ls], FPS:%03d Tri:%.03fm Cull %d/%d nodes (%d,%d,%d)",
 			Game->CurrentMapName.c_str(),
 			driver->getName(),
 			driver->getFPS (),
