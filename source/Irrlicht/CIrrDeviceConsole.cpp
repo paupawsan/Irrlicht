@@ -38,7 +38,7 @@ BOOL WINAPI ConsoleHandler(DWORD CEvent)
 	DeviceToClose->closeDevice();
     return TRUE;
 }
-#else
+#elif defined(_IRR_POSIX_API_)
 // sigterm handler
 #include <signal.h>
 
@@ -94,9 +94,9 @@ CIrrDeviceConsole::CIrrDeviceConsole(const SIrrlichtCreationParameters& params)
 	// catch windows close/break signals
 	SetConsoleCtrlHandler((PHANDLER_ROUTINE)ConsoleHandler, TRUE);
 
-#else
+#elif defined(_IRR_POSIX_API_)
 	// catch other signals
-    signal(SIGABRT, &sighandler);
+	signal(SIGABRT, &sighandler);
 	signal(SIGTERM, &sighandler);
 	signal(SIGINT,  &sighandler);
 
