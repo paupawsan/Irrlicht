@@ -1,5 +1,7 @@
 Changes in 1.6 (23.09.2009)
 
+ - Fix MAKE_IRR_ID so it can be used from outside the irr namespace (Micha's patch)
+
  - Renamed some methods in ISkinnedMesh to match the official Irrlicht naming scheme according to createXXX()
 
  - Change debug data to draw using lines instead of arrows, which is much faster. Patch by pc0de
