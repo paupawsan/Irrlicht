@@ -122,7 +122,7 @@ int main()
 	dimensions, etc.
 	*/
 	IrrlichtDevice *device =
-		createDevice( video::EDT_SOFTWARE, dimension2d<u32>(640, 480), 16,
+		createDevice( video::EDT_SOFTWARE, dimension2d<u32>(1013,617), 16,
 			false, false, false, 0);
 
 	if (!device)
@@ -193,7 +193,9 @@ int main()
 	(0, 30, -40). The camera looks from there to (0,5,0), which is
 	approximately the place where our md2 model is.
 	*/
-	smgr->addCameraSceneNode(0, vector3df(0,30,-40), vector3df(0,5,0));
+	//smgr->addCameraSceneNode(0, vector3df(0,30,-40), vector3df(0,5,0));
+
+	smgr->addCameraSceneNodeFPS(0,1,1,0,0,0,true);
 
 	/*
 	Ok, now we have set up the scene, lets draw everything: We run the

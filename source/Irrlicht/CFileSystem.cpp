@@ -689,6 +689,13 @@ IFileList* CFileSystem::createFileList()
 	return r;
 }
 
+//! Creates an empty filelist
+IFileList* CFileSystem::createEmptyFileList(const io::path& path, bool ignoreCase, bool ignorePaths)
+{
+	return new CFileList(path, ignoreCase, ignorePaths);
+}
+
+
 //! determines if a file exists and would be able to be opened.
 bool CFileSystem::existFile(const io::path& filename) const
 {

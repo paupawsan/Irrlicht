@@ -1,5 +1,7 @@
 Changes in 1.6 (23.09.2009)
 
+ - Added IFileSystem::createEmptyFileList, exposed IFileList::sort, addItem and added getID
+
  - Fix MAKE_IRR_ID so it can be used from outside the irr namespace (Micha's patch)
 
  - Renamed some methods in ISkinnedMesh to match the official Irrlicht naming scheme according to createXXX()

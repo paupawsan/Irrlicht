@@ -226,6 +226,12 @@ public:
 	See IReferenceCounted::drop() for more information. */
 	virtual IFileList* createFileList() =0;
 
+	//! Creates an empty filelist
+	/** \return a Pointer to the created IFileList is returned. After the list has been used
+	it has to be deleted using its IFileList::drop() method.
+	See IReferenceCounted::drop() for more information. */
+	virtual IFileList* createEmptyFileList(const io::path& path, bool ignoreCase, bool ignorePaths) =0;
+
 	//! Set the active type of file system.
 	virtual EFileSystemType setFileListSystem(EFileSystemType listType) =0;
 
