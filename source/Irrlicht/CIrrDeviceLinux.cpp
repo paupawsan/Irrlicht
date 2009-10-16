@@ -74,7 +74,7 @@ CIrrDeviceLinux::CIrrDeviceLinux(const SIrrlichtCreationParameters& param)
 #endif
 #endif
 	Width(param.WindowSize.Width), Height(param.WindowSize.Height),
-	Close(false), WindowHasFocus(false), WindowMinimized(false),
+	WindowHasFocus(false), WindowMinimized(false),
 	UseXVidMode(false), UseXRandR(false), UseGLXWindow(false),
 	ExternalWindow(false), AutorepeatSupport(0)
 {

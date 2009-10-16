@@ -107,8 +107,9 @@ namespace irr
 		public:
 
 			CCursorControl(const core::dimension2d<u32>& wsize, HWND hwnd, bool fullscreen)
-				: WindowSize(wsize), InvWindowSize(0.0f, 0.0f), IsVisible(true),
-					HWnd(hwnd), BorderX(0), BorderY(0), UseReferenceRect(false)
+				: WindowSize(wsize), InvWindowSize(0.0f, 0.0f),
+					HWnd(hwnd), BorderX(0), BorderY(0),
+					UseReferenceRect(false), IsVisible(true)
 			{
 				if (WindowSize.Width!=0)
 					InvWindowSize.Width = 1.0f / WindowSize.Width;
@@ -298,12 +299,12 @@ namespace irr
 			core::position2d<s32> CursorPos;
 			core::dimension2d<u32> WindowSize;
 			core::dimension2d<f32> InvWindowSize;
-			bool IsVisible;
 			HWND HWnd;
 
 			s32 BorderX, BorderY;
-			bool UseReferenceRect;
 			core::rect<s32> ReferenceRect;
+			bool UseReferenceRect;
+			bool IsVisible;
 		};
 
 		//! returns the win32 cursor control
