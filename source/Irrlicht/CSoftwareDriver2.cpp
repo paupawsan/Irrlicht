@@ -2149,3 +2149,4 @@ IVideoDriver* createSoftwareDriver2(const core::dimension2d<u32>& windowSize, bo
 
 } // end namespace video
 } // end namespace irr
+
