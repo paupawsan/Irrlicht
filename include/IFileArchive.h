@@ -80,7 +80,7 @@ class IArchiveLoader : public virtual IReferenceCounted
 public:
 	//! Check if the file might be loaded by this class
 	/** Check based on the file extension (e.g. ".zip")
-	\param fileName Name of file to check.
+	\param filename Name of file to check.
 	\return True if file seems to be loadable. */
 	virtual bool isALoadableFileFormat(const path& filename) const =0;
 
@@ -97,12 +97,16 @@ public:
 	virtual bool isALoadableFileFormat(E_FILE_ARCHIVE_TYPE fileType) const =0;
 
 	//! Creates an archive from the filename
-	/** \param file File handle to check.
+	/** \param filename File to use.
+	\param ignoreCase Searching is performed without regarding the case
+	\param ignorePath Files are searched for without checking for the directories
 	\return Pointer to newly created archive, or 0 upon error. */
 	virtual IFileArchive* createArchive(const path& filename, bool ignoreCase, bool ignorePaths) const =0;
 
 	//! Creates an archive from the file
-	/** \param file File handle to check.
+	/** \param file File handle to use.
+	\param ignoreCase Searching is performed without regarding the case
+	\param ignorePath Files are searched for without checking for the directories
 	\return Pointer to newly created archive, or 0 upon error. */
 	virtual IFileArchive* createArchive(io::IReadFile* file, bool ignoreCase, bool ignorePaths) const =0;
 };
