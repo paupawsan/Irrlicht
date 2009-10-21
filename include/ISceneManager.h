@@ -691,6 +691,7 @@ namespace scene
 		\param spherePercentage: How much of the sphere is drawn.
 		Value should be between 0 and 2, where 1 is an exact
 		half-sphere and 2 is a full sphere.
+		\param radius The Radius of the sphere
 		\param parent: Parent scene node of the dome. A dome usually has no parent,
 		so this should be null. Note: If a parent is set, the dome will not
 		change how it is drawn.
@@ -1097,6 +1098,8 @@ namespace scene
 		move from the start point to the end point.
 		\param loop: If set to false, the node stops when the end point is reached.
 		If loop is true, the node begins again at the start.
+		\param pingpong Flag to set whether the animator should fly
+		back from end to start again.
 		\return The animator. Attach it to a scene node with ISceneNode::addAnimator()
 		and the animator will animate it.
 		If you no longer need the animator, you should call ISceneNodeAnimator::drop().
@@ -1198,10 +1201,11 @@ namespace scene
 		virtual ITriangleSelector* createTriangleSelector(IMesh* mesh, ISceneNode* node) = 0;
 
 		//! Creates a simple ITriangleSelector, based on an animated mesh scene node.
-		//! Details of the mesh associated with the node will be extracted internally.
-		//! Call ITriangleSelector::update() to have the triangle selector updated based
-		//! on the current frame of the animated mesh scene node.
-		//! \param: The animated mesh scene node from which to build the selector
+		/** Details of the mesh associated with the node will be extracted internally.
+		Call ITriangleSelector::update() to have the triangle selector updated based
+		on the current frame of the animated mesh scene node.
+		\param node The animated mesh scene node from which to build the selector
+		*/
 		virtual ITriangleSelector* createTriangleSelector(IAnimatedMeshSceneNode* node) = 0;
 
 

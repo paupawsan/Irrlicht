@@ -99,14 +99,14 @@ public:
 	//! Creates an archive from the filename
 	/** \param filename File to use.
 	\param ignoreCase Searching is performed without regarding the case
-	\param ignorePath Files are searched for without checking for the directories
+	\param ignorePaths Files are searched for without checking for the directories
 	\return Pointer to newly created archive, or 0 upon error. */
 	virtual IFileArchive* createArchive(const path& filename, bool ignoreCase, bool ignorePaths) const =0;
 
 	//! Creates an archive from the file
 	/** \param file File handle to use.
 	\param ignoreCase Searching is performed without regarding the case
-	\param ignorePath Files are searched for without checking for the directories
+	\param ignorePaths Files are searched for without checking for the directories
 	\return Pointer to newly created archive, or 0 upon error. */
 	virtual IFileArchive* createArchive(io::IReadFile* file, bool ignoreCase, bool ignorePaths) const =0;
 };

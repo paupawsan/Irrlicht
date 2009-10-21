@@ -412,7 +412,7 @@ namespace video
 		\param colorKeyPixelPos Position of a pixel with the color key
 		color. Every texel with this color will become fully transparent as
 		described above.
-		\param \deprecated zeroTexels If set to true, then any texels that match
+		\deprecated \param zeroTexels If set to true, then any texels that match
 		the color key will have their color, as well as their alpha, set to zero
 		(i.e. black). This behaviour matches the legacy (buggy) behaviour prior
 		to release 1.5 and is provided for backwards compatibility only.*/
@@ -864,8 +864,7 @@ namespace video
 		/** These are global values attached to each 3d object rendered,
 		which has the fog flag enabled in its material.
 		\param color Color of the fog
-		\param linearFog Set this to true for linear fog, otherwise
-		exponential fog is applied.
+		\param fogType Type of fog used
 		\param start Only used in linear fog mode (linearFog=true).
 		Specifies where fog starts.
 		\param end Only used in linear fog mode (linearFog=true).
