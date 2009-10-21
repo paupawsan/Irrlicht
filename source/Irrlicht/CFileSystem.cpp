@@ -438,7 +438,7 @@ io::path CFileSystem::getAbsolutePath(const io::path& filename) const
 #elif defined(_IRR_WINDOWS_API_)
 
 	#if defined(_IRR_WCHAR_FILESYSTEM )
-		c16 fpath[_MAX_PATH];
+		wchar_t fpath[_MAX_PATH];
 		p = _wfullpath(fpath, filename.c_str(), _MAX_PATH);
 	#else
 		c8 fpath[_MAX_PATH];
