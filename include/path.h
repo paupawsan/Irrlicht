@@ -12,6 +12,8 @@ namespace irr
 namespace io
 {
 
+//! Type used for all file system things.
+/** This type will transparently handle different file system encodings. */
 typedef core::string<fschar_t> path;
 
 } // io
