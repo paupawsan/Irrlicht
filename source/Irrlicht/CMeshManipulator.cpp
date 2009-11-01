@@ -1104,7 +1104,6 @@ IMesh* CMeshManipulator::createMeshWith1TCoords(IMesh* mesh) const
 
 		SMeshBuffer* buffer = new SMeshBuffer();
 		buffer->Material = mesh->getMeshBuffer(b)->getMaterial();
-		buffer->Material.MaterialType = video::EMT_SOLID;
 
 		// copy vertices
 
