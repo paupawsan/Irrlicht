@@ -1325,6 +1325,7 @@ void CSceneManager::drawAll()
 	video::IVideoDriver* driver = getVideoDriver();
 	if ( driver )
 	{
+		driver->setMaterial(video::SMaterial());
 		driver->setTransform ( video::ETS_PROJECTION, core::IdentityMatrix );
 		driver->setTransform ( video::ETS_VIEW, core::IdentityMatrix );
 		driver->setTransform ( video::ETS_WORLD, core::IdentityMatrix );
@@ -1917,6 +1918,9 @@ void CSceneManager::removeAll()
 {
 	ISceneNode::removeAll();
 	setActiveCamera(0);
+	// Make sure the driver is reset, might need a more complex method at some point
+	if (Driver)
+		Driver->setMaterial(video::SMaterial());
 }
 
 
