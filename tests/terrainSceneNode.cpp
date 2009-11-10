@@ -60,7 +60,7 @@ bool terrainSceneNode(void)
 	smgr->drawAll();
 	driver->endScene();
 
-	result &= takeScreenshotAndCompareAgainstReference(driver, "-terrainSceneNode-2.png", 98.84f);
+	result &= takeScreenshotAndCompareAgainstReference(driver, "-terrainSceneNode-2.png", 98.83f);
 	if(!result)
 	{
 		logTestString("Large camera up rotation caused bad recalc.\n");
