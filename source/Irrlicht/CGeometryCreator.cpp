@@ -508,8 +508,8 @@ IMesh* CGeometryCreator::createSphereMesh(f32 radius, u32 polyCountX, u32 polyCo
 
 /* A cylinder with proper normals and texture coords */
 IMesh* CGeometryCreator::createCylinderMesh(f32 radius, f32 length, 
-											u32 tesselation, const video::SColor& color, 
-											bool closeTop, f32 oblique) const
+			u32 tesselation, const video::SColor& color, 
+			bool closeTop, f32 oblique) const
 {
 	SMeshBuffer* buffer = new SMeshBuffer();
 
@@ -521,10 +521,10 @@ IMesh* CGeometryCreator::createCylinderMesh(f32 radius, f32 length,
 	u32 i;
 	video::S3DVertex v;
 	v.Color = color;
-	buffer->Vertices.reallocate(tesselation*4+(closeTop?2:1));
-	buffer->Indices.reallocate((tesselation*2)*(closeTop?12:9));
+	buffer->Vertices.reallocate(tesselation*4+4+(closeTop?2:1));
+	buffer->Indices.reallocate((tesselation*2+1)*(closeTop?12:9));
 	f32 tcx = 0.f;
-	for ( i = 0; i != tesselation; ++i )
+	for ( i = 0; i <= tesselation; ++i )
 	{
 		const f32 angle = angleStep * i;
 		v.Pos.X = radius * cosf(angle);
@@ -561,8 +561,9 @@ IMesh* CGeometryCreator::createCylinderMesh(f32 radius, f32 length,
 		tcx += recTesselation;
 	}
 
-	const u32 nonWrappedSize = ( tesselation* 4 ) - 2;
-	for ( i = 0; i != nonWrappedSize; i += 2 )
+	// indices for the main hull part
+	const u32 nonWrappedSize = tesselation* 4;
+	for (i=0; i != nonWrappedSize; i += 2)
 	{
 		buffer->Indices.push_back(i + 2);
 		buffer->Indices.push_back(i + 0);
@@ -573,6 +574,7 @@ IMesh* CGeometryCreator::createCylinderMesh(f32 radius, f32 length,
 		buffer->Indices.push_back(i + 3);
 	}
 
+	// two closing quads between end and start
 	buffer->Indices.push_back(0);
 	buffer->Indices.push_back(i + 0);
 	buffer->Indices.push_back(i + 1);
@@ -642,9 +644,10 @@ IMesh* CGeometryCreator::createCylinderMesh(f32 radius, f32 length,
 
 
 /* A cone with proper normals and texture coords */
-IMesh* CGeometryCreator::createConeMesh(f32 radius, f32 length, u32 tesselation, 
-										const video::SColor& colorTop, 
-										const video::SColor& colorBottom, f32 oblique) const
+IMesh* CGeometryCreator::createConeMesh(f32 radius, f32 length, u32 tesselation,
+					const video::SColor& colorTop, 
+					const video::SColor& colorBottom,
+					f32 oblique) const
 {
 	SMeshBuffer* buffer = new SMeshBuffer();
 
