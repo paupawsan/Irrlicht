@@ -284,7 +284,9 @@ namespace scene
 
 
 		//! Removes a child from this scene node.
-		/** \param child A pointer to the new child.
+		/** If found in the children list, the child pointer is also
+		dropped and might be deleted if no other grab exists.
+		\param child A pointer to the child which shall be removed.
 		\return True if the child was removed, and false if not,
 		e.g. because it couldn't be found in the children list. */
 		virtual bool removeChild(ISceneNode* child)
@@ -305,6 +307,9 @@ namespace scene
 
 
 		//! Removes all children of this scene node
+		/** The scene nodes found in the children list are also dropped
+		and might be deleted if no other grab exists on them.
+		*/
 		virtual void removeAll()
 		{
 			core::list<ISceneNode*>::Iterator it = Children.begin();
@@ -318,7 +323,9 @@ namespace scene
 		}
 
 
-		//! Removes this scene node from the scene, deleting it.
+		//! Removes this scene node from the scene
+		/** If no other grab exists for this node, it will be deleted.
+		*/
 		virtual void remove()
 		{
 			if (Parent)
@@ -347,21 +354,27 @@ namespace scene
 
 
 		//! Removes an animator from this scene node.
-		/** \param animator A pointer to the animator to be deleted. */
+		/** If the animator is found, it is also dropped and might be
+		deleted if not other grab exists for it.
+		\param animator A pointer to the animator to be deleted. */
 		virtual void removeAnimator(ISceneNodeAnimator* animator)
 		{
 			core::list<ISceneNodeAnimator*>::Iterator it = Animators.begin();
 			for (; it != Animators.end(); ++it)
+			{
 				if ((*it) == animator)
 				{
 					(*it)->drop();
 					Animators.erase(it);
 					return;
 				}
+			}
 		}
 
 
 		//! Removes all animators from this scene node.
+		/** The animators might also be deleted if no other grab exists
+		for them. */
 		virtual void removeAnimators()
 		{
 			core::list<ISceneNodeAnimator*>::Iterator it = Animators.begin();
