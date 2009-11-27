@@ -62,7 +62,7 @@ enum E_TEXTURE_CREATION_FLAG
 	ETCF_NO_ALPHA_CHANNEL = 0x00000020,
 
 	//! Allow the Driver to use Non-Power-2-Textures
-	/** BurningVideo can handle Non-Power-2 Textures in 2D (GUI), but not it 3D. */
+	/** BurningVideo can handle Non-Power-2 Textures in 2D (GUI), but not in 3D. */
 	ETCF_ALLOW_NON_POWER_2 = 0x00000040,
 
 	/** This flag is never used, it only forces the compiler to compile
