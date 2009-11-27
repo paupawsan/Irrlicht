@@ -1642,3 +1642,7 @@ Split hardware mapping hint into vertex and index part
 vector2d.h
 Fix angle calculation for integer vectors
 
+Changes for Version 1.5.2
+-------------------------
+Even less visible changes have been made in this version. Only the automatic Solaris OS recognition has changed, so make sure you have all things defined properly if you compile for Solaris. And the float parser bugfix is a visible change, though non-interfering for existing code.
+

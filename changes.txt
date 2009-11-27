@@ -667,6 +667,12 @@ Changes in 1.6 (23.09.2009)
 -------------------------------------
 Changes in version 1.5.2 (??.??.2009)
 
+ - Properly check boundaries in getFont and setFont.
+
+ - Reinit values in the driver when scene manager is cleared.
+
+ - Normals handling fixed in createMeshWithTangents, existing normals are not always destroyed now.
+
  - Fix terrain smoothing, bug found by loverlinfish
 
  - SOLARIS recognition removed. Please specify the platform define manually. This allows for compilation under sparc/Linux and sparc/Solaris
