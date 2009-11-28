@@ -1,5 +1,7 @@
 Changes in 1.6.1
 
+ - Scrollbuttons in IGUITabControl adapt now to tab-height.
+
  - Fix modal dialog position (found by LoneBoco: http://sourceforge.net/tracker/?func=detail&aid=2900266&group_id=74339&atid=540676)
 
  - Make stringarrays for enums in IGUISkin a little safer
