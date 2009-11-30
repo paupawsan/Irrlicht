@@ -253,7 +253,7 @@ bool CGUIComboBox::OnEvent(const SEvent& event)
 				if (ListBox &&
 					(Environment->hasFocus(ListBox) || ListBox->isMyChild(event.GUIEvent.Caller) ) &&
 					event.GUIEvent.Element != this &&
-				    !isMyChild(event.GUIEvent.Element) &&
+					!isMyChild(event.GUIEvent.Element) &&
 					!ListBox->isMyChild(event.GUIEvent.Element))
 				{
 					openCloseMenu();
