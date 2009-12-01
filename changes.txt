@@ -1,5 +1,7 @@
 Changes in 1.6.1
 
+ - Bugfix: spinbox can no longer get in an endless loop due to floating point rounding error (found by slavik262)
+
  - !!API change!! Disabled AntiAliasing of Lines in material default
    Please enable this manually per material when sure that it won't lead to SW rendering.
 
