@@ -386,7 +386,10 @@ ITexture* CNullDriver::getTexture(const io::path& filename)
 		// Re-check name for actual archive names
 		texture = findTexture(file->getFileName());
 		if (texture)
+		{
+			file->drop();
 			return texture;
+		}
 
 		texture = loadTextureFromFile(file);
 		file->drop();
