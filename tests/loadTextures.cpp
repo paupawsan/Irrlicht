@@ -31,7 +31,7 @@ bool loadFromFileFolder(void)
 	assert(tex1);
 	if(!tex1)
 		logTestString("Unable to open ../media/tools.png\n");
-	if (!driver->getTextureCount()==numTexs+1)
+	if (driver->getTextureCount()!=numTexs+1)
 	{
 		logTestString("No additional texture in the texture cache");
 		return false;
@@ -41,9 +41,9 @@ bool loadFromFileFolder(void)
 	assert(readFile);
 	if(!readFile)
 		logTestString("Unable to open ../media/tools.png\n");
-	if (!driver->getTextureCount()==numTexs+1)
+	if (driver->getTextureCount()!=numTexs+1)
 	{
-		logTestString("Additional texture in the texture cache");
+		logTestString("Additional texture in the texture cache (1)\n");
 		return false;
 	}
 
@@ -51,9 +51,9 @@ bool loadFromFileFolder(void)
 	assert(tex2);
 	if(!readFile)
 		logTestString("Unable to create texture from ../media/tools.png\n");
-	if (!driver->getTextureCount()==numTexs+1)
+	if (driver->getTextureCount()!=numTexs+1)
 	{
-		logTestString("Additional texture in the texture cache");
+		logTestString("Additional texture in the texture cache (2)\n");
 		return false;
 	}
 
@@ -66,9 +66,9 @@ bool loadFromFileFolder(void)
 	assert(tex3);
 	if(!tex3)
 		logTestString("Unable to open tools.png\n");
-	if (!driver->getTextureCount()==numTexs+1)
+	if (driver->getTextureCount()!=numTexs+1)
 	{
-		logTestString("Additional texture in the texture cache");
+		logTestString("Additional texture in the texture cache (3)\n");
 		return false;
 	}
 
@@ -76,20 +76,19 @@ bool loadFromFileFolder(void)
 	assert(tex4);
 	if(!tex4)
 		logTestString("Unable to open tools.png\n");
-	if (!driver->getTextureCount()==numTexs+1)
+	if (driver->getTextureCount()!=numTexs+1)
 	{
-		logTestString("Additional texture in the texture cache");
+		logTestString("Additional texture in the texture cache (4)\n");
 		return false;
 	}
 
 	device->drop();
-	return (tex1 == tex2 && tex1 == tex3 && tex1 == tex4);
+	return ((tex1 == tex2) && (tex1 == tex3) && (tex1 == tex4));
 }
 
 bool loadTextures()
 {
 	bool result = true;
-	result |= loadFromFileFolder();
+	result &= loadFromFileFolder();
 	return result;
 }
-

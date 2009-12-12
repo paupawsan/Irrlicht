@@ -1,2 +1,3 @@
-Test suite pass at GMT Tue Dec  1 23:13:01 2009
+Tests finished. 36 tests of 36 passed.
+Test suite pass at GMT Sat Dec 12 11:28:28 2009
 

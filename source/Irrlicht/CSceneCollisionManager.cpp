@@ -101,7 +101,6 @@ void CSceneCollisionManager::getPickedNodeBB(ISceneNode* root,
 
 				// Do the initial intersection test in object space, since the
 				// object space box test is more accurate.
-				/* TODO: We have a problem with this first test. disabled for the moment.
 				if(objectBox.isPointInside(objectRay.start))
 				{
 					// If the line starts inside the box, then consider the distance as being
@@ -116,7 +115,7 @@ void CSceneCollisionManager::getPickedNodeBB(ISceneNode* root,
 						ray.end = ray.start + (rayVector * sqrtf(toIntersectionSq));
 					}
 				}
-				else */
+				else
 				if (objectBox.intersectsWithLine(objectRay))
 				{
 					// Now transform into world space, since we need to use world space
