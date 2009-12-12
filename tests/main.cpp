@@ -59,6 +59,7 @@ int main(int argumentCount, char * arguments[])
 	TEST(filesystem);
 	TEST(zipReader);
 	TEST(exports);
+	TEST(loadTextures);
 	TEST(sceneCollisionManager);
 	TEST(testVector3d);
 	TEST(testVector2d);

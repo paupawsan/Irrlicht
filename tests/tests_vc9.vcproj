@@ -231,6 +231,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\loadTextures.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\main.cpp"
 				>
 			</File>
@@ -288,6 +292,10 @@
 			</File>
 			<File
 				RelativePath=".\testVector3d.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\testXML.cpp"
 				>
 			</File>
 			<File
