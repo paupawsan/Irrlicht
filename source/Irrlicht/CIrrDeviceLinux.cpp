@@ -322,7 +322,7 @@ bool CIrrDeviceLinux::createWindow()
 		{
 #ifdef GLX_VERSION_1_3
 			typedef GLXFBConfig * ( * PFNGLXCHOOSEFBCONFIGPROC) (Display *dpy, int screen, const int *attrib_list, int *nelements);
-			
+
 #ifdef _IRR_OPENGL_USE_EXTPOINTER_
 			PFNGLXCHOOSEFBCONFIGPROC glxChooseFBConfig = (PFNGLXCHOOSEFBCONFIGPROC)glXGetProcAddress(reinterpret_cast<const GLubyte*>("glXChooseFBConfig"));
 #else
@@ -694,6 +694,9 @@ bool CIrrDeviceLinux::createWindow()
 
 	XGetGeometry(display, window, &tmp, &x, &y, &Width, &Height, &borderWidth, &bits);
 	CreationParams.Bits = bits;
+	CreationParams.WindowSize.Width = Width;
+	CreationParams.WindowSize.Height = Height;
+
 	StdHints = XAllocSizeHints();
 	long num;
 	XGetWMNormalHints(display, window, StdHints, &num);

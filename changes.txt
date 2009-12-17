@@ -1,5 +1,7 @@
 Changes in 1.6.1
 
+ - Fix screensize in videodriver when we didn't get the requested window size. This also prevents that gui-clicks are no longer synchronized with gui-drawing and elements can't be hit anymore.
+
  - Bugfix: Prevent a crash when getTypeName was called for the guienvironment. EGUIET_ELEMENT got changed for this.
 
  - Bugfix: Horizontal centered font with linebreaks draw now all lines. For example multiline TextSceneNodes work again.
