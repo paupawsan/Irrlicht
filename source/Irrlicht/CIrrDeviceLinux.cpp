@@ -207,6 +207,35 @@ int IrrPrintXError(Display *display, XErrorEvent *event)
 }
 #endif
 
+#if defined(_IRR_COMPILE_WITH_X11_)
+void IrrPrintXGrabError(int grabResult, const c8 * grabCommand )
+{
+	if ( grabResult == GrabSuccess )
+	{
+//		os::Printer::log(grabCommand, ": GrabSuccess", ELL_INFORMATION);
+		return;
+	}
+
+	switch ( grabResult )
+	{
+		case AlreadyGrabbed:
+			os::Printer::log(grabCommand, ": AlreadyGrabbed", ELL_WARNING);
+			break;
+		case GrabNotViewable:
+			os::Printer::log(grabCommand, ": GrabNotViewable", ELL_WARNING);
+			break;
+		case GrabFrozen:
+			os::Printer::log(grabCommand, ": GrabFrozen", ELL_WARNING);
+			break;
+		case GrabInvalidTime:
+			os::Printer::log(grabCommand, ": GrabInvalidTime", ELL_WARNING);
+			break;
+		default:
+			os::Printer::log(grabCommand, ": grab failed with unknown problem", ELL_WARNING);
+			break;
+	}
+}
+#endif
 
 bool CIrrDeviceLinux::createWindow()
 {
@@ -587,10 +616,13 @@ bool CIrrDeviceLinux::createWindow()
 
 			XWarpPointer(display, None, window, 0, 0, 0, 0, 0, 0);
 			XMapRaised(display, window);
-			XGrabKeyboard(display, window, True, GrabModeAsync,
+ 			XSetInputFocus(display, window, RevertToParent, CurrentTime);
+			int grabKb = XGrabKeyboard(display, window, True, GrabModeAsync,
 				GrabModeAsync, CurrentTime);
-			XGrabPointer(display, window, True, ButtonPressMask,
+			IrrPrintXGrabError(grabKb, "XGrabKeyboard");
+			int grabPointer = XGrabPointer(display, window, True, ButtonPressMask,
 				GrabModeAsync, GrabModeAsync, window, None, CurrentTime);
+			IrrPrintXGrabError(grabPointer, "XGrabPointer");
 		}
 		else
 		{ // we want windowed mode
