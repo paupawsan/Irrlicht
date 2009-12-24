@@ -374,8 +374,8 @@ IAnimatedMesh* CDMFLoader::createMesh(io::IReadFile* file)
 			mat.setTexture(1, lig);
 		}
 
-		delete verts;
-		delete faces;
+		delete [] verts;
+		delete [] faces;
 	}
 
 	// delete all buffers without geometry in it.
