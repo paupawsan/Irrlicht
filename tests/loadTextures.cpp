@@ -92,3 +92,4 @@ bool loadTextures()
 	result &= loadFromFileFolder();
 	return result;
 }
+

@@ -692,7 +692,7 @@ Changes in 1.6 (23.09.2009)
  - Add a hitPosition out parameter to ISceneCollisionManager::getCollisionResultPosition() - this is a (small) API breaking change.
 
 -------------------------------------
-Changes in version 1.5.2 (??.??.2009)
+Changes in version 1.5.2 (16.12.2009)
 
  - Properly check boundaries in getFont and setFont.
 
