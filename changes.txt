@@ -1,5 +1,7 @@
 Changes in 1.6.1
 
+ - Fix pingpong for CSceneNodeAnimatorFlyStraight (found by gbox)
+
  - Fix bug with IGUIEditBox where the cursor position is reset on text change.
 
  - Make sure the window top-left corner on Windows is not negative on start so that Windows sytem-menu is always visible.
